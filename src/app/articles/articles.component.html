@@ -5,6 +5,9 @@
         <div class="col-4"><input type="text"class="form-control" #author placeholder="Sreach by author"></div>
         <div class="col-4"><input type="text"class="form-control" #tag  placeholder="Sreach by tag"></div>
         <div class="col-4"><button  class="btn btn-primary" (click)="onSreach(author.value,tag.value)"> Sreach </button></div>
+        <div *ngIf="tag.value" class="mt-3"><h5>Tag : {{tag.value}}</h5></div>
+        <div *ngIf="author.value" class="mt-3"><h5>Author : {{author.value}}</h5></div>
+
     </div>
 
     

@@ -8,16 +8,23 @@ import { AuthorizationService } from '../authorization.service';
 })
 export class NavigationComponent implements OnInit {
   
-  user :any;
-   
+  
+  username : any;
   
 
   constructor(private authorization:AuthorizationService) { }
+
+  getUsername(){
+    
+    return this.authorization.user.username;
+  }
 
   ngOnInit(): void {    
 
   }
 
-
+  logout(){
+    this.authorization.clearUser();
+  }
 
 }

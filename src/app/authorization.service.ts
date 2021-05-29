@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserObject } from 'src/assets/UserObject';
 import { from, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class AuthorizationService {
   readonly baseUrl = "https://conduit.productionready.io/api"
 
   user = new UserObject() ;
-
+  error:any = false;
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private route : Router) {
     
    }
 
@@ -24,7 +25,7 @@ export class AuthorizationService {
     {"user":{
         "email": email,
         "password": password}}
-    ).subscribe(response =>{ this.user = response.user;})
+    ).subscribe(response =>{ this.user = response.user; this.route.navigate([''])},error => {this.error = error})
   //   const httpOptions = {
   //     headers: new HttpHeaders({
   //       Authorization: 'Token '+this.user.token
@@ -33,14 +34,7 @@ export class AuthorizationService {
   }
 
   clearUser(){
-    this.user.id = null;
-    this.user.username = '';
-    this.user.email = '';
-    this.user.createdAt = '';
-    this.user.updatedAt = '';
-    this.user.bio = '';
-    this.user.image = null;
-    this.user.token = '';
+    this.user = new UserObject();
   }
 
   register(username:string,email:string, password:string){
@@ -49,15 +43,10 @@ export class AuthorizationService {
         "username" : username,
         "email": email,
         "password": password}}
-    ).subscribe(response =>{ this.user = response.user;})
+    ).subscribe(response =>{ this.user = response.user; this.route.navigate([''])},error => {this.error = error})
   }
 
-  getCurrentUser(){
-    
-    const url = `${this.baseUrl}/user`;
-    return this.http.get<any>(url)
-    
-  }
+
   
 
 }

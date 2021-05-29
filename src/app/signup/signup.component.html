@@ -3,6 +3,13 @@
         <input type="text" placeholder="Username" formControlName="username" class="form-control mb-3">
         <input type="text" placeholder="E-mail" formControlName="email" class="form-control mb-3">
         <input type="password" placeholder="Password" formControlName="password" class="form-control mb-3">
+        <div *ngIf="formError"class="card text-white bg-danger p-2 mb-3">Email, username and password required</div>
+        <div *ngIf="getHttpError()"class="card text-white bg-danger p-2 mb-3">
+            <div class="card-header">Invalid user , email or password</div>
+            <div class="card-body">
+                <p>{{getHttpError().message}}</p>
+             </div>
+        </div>
         <button type="submit" class="btn btn-success">Sign Up</button>
     </form>    
 

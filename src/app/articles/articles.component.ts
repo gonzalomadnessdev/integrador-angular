@@ -22,8 +22,7 @@ export class ArticlesComponent implements OnInit {
     this.service.getArticles().subscribe(response => this.articles = response.articles)
   }
 
-  onSreach(author,tag){
-
+  onSreach(author:string,tag:string){
 
     this.service.getArticles(author,tag).subscribe(response => this.articles = response.articles)
   }

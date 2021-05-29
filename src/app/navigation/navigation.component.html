@@ -1,12 +1,13 @@
 <nav class="row mt-3 mb-5">
-<pre>{{user| json}}</pre>
-<div class="col">
 
+<div class="col">
+    <h3 *ngIf="getUsername()" class="ms-3">Welcome! {{getUsername()}}</h3>
 </div>
 <div class="col-3">
     <a routerLink="/" class="btn btn-primary me-3">Home</a>
-    <a routerLink="/login" class="btn btn-primary me-3">Login</a>
-    <a routerLink="/signup" class="btn btn-primary">Signup</a>
+    <a *ngIf="!getUsername()"  routerLink="/login" class="btn btn-primary me-3">Login</a>
+    <a *ngIf="!getUsername()"  routerLink="/signup" class="btn btn-primary me-3">Signup</a>
+    <button *ngIf="getUsername()" class="btn btn-danger me3" (click)="logout()">Logout</button>
 </div>
 
 
