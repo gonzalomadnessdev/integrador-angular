@@ -1,0 +1,8 @@
+<div class="container custom-width">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <input type="text" placeholder="E-mail" formControlName="email" class="form-control mb-3">
+        <input type="password" placeholder="Password" formControlName="password" class="form-control mb-3">
+        <button type="submit" class="btn btn-success">Log In</button>
+        
+    </form>    
+</div>

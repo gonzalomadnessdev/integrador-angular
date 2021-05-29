@@ -1,0 +1,10 @@
+<div class="container custom-width">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Username" formControlName="username" class="form-control mb-3">
+        <input type="text" placeholder="E-mail" formControlName="email" class="form-control mb-3">
+        <input type="password" placeholder="Password" formControlName="password" class="form-control mb-3">
+        <button type="submit" class="btn btn-success">Sign Up</button>
+    </form>    
+
+ 
+</div>

@@ -1,0 +1,24 @@
+<!-- <pre>{{articles | json}}</pre> -->
+<div class="container">
+
+    <div class="row m-3 mb-5">
+        <div class="col-4"><input type="text"class="form-control" #author placeholder="Sreach by author"></div>
+        <div class="col-4"><input type="text"class="form-control" #tag  placeholder="Sreach by tag"></div>
+        <div class="col-4"><button  class="btn btn-primary" (click)="onSreach(author.value,tag.value)"> Sreach </button></div>
+    </div>
+
+    
+
+<div *ngFor="let article of articles">
+    <h3>{{article.title}}</h3>
+    <p>{{article.body}}</p>
+    <pre>tags: {{article.tagList }}</pre>
+    
+
+    <small><a  [routerLink]="['/article' , article.slug]" class="btn btn-secondary mb-3" >Read comments</a></small>
+    <hr>
+</div>
+
+</div>
+
+
